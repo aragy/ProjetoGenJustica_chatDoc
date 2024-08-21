@@ -1,6 +1,6 @@
 # ProjetoGenJustica_chatDoc
 
-**ProjetoGenJustica_chatDoc** is a modularized AI-powered solution that allows for processing PDFs, generating embeddings, and performing question-answering tasks over legal documents using advanced machine learning models.
+**ProjetoGenJustica_chatDoc** is a Proof of Concept (POC) modularized AI-powered solution that allows for processing PDFs, generating embeddings, and performing question-answering tasks over legal documents using advanced machine learning models.
 ## Project Structure
 
    - `qa_pipeline_service`: Handles the processing of PDFs, generating embeddings, and performing vector-based searches.
