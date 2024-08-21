@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pdfminer.six
+faiss-cpu
+langchain-community
+python-multipart
+pydantic
+fastembed
+sentence-transformers
+langchain-huggingface

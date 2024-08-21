@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  qa_pipeline_service:
+    build:
+      context: ./qa_pipeline_service
+      dockerfile: Dockerfile
+    container_name: qa_pipeline_service
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    environment:
+      - CUDA_VISIBLE_DEVICES=1  
+    ports:
+      - "8100:8100"  
+    networks:
+      - chatbot_network
+
+  chat_interface:
+    build:
+      context: ./chat_interface
+      dockerfile: Dockerfile
+    container_name: chat_interface
+    ports:
+      - "8601:8601"  
+    networks:
+      - chatbot_network
+    depends_on:
+      - qa_pipeline_service
+
+networks:
+  chatbot_network:
+    driver: bridge
