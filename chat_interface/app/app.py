@@ -1,16 +1,48 @@
 import streamlit as st
 import requests
 
-# Configurar a URL do serviço com a nova porta
+
 QA_PIPELINE_URL = "http://qa_pipeline_service:8100"
 
-# Gerenciar o estado da interface
+
+st.set_page_config(page_title="Interface Conversacional", page_icon=":speech_balloon:")
+
+
+st.markdown(
+    """
+    <div style="display: flex; align-items: center; justify-content: center; border-bottom: 2px solid red; padding: 10px; background-color: white;">
+        <img src="https://www.tjms.jus.br/storage/cms-arquivos/3a9585dff89cf61ef2256f1db0b6ddd1.png" alt="TJMS" style="height: 60px; margin-right: 20px;">
+        <h3 style="color: black; margin: 0;">Tribunal de Justiça de Mato Grosso do Sul</h3>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-color: white;
+        color: black;  
+    }
+    .stMarkdown h2, .stMarkdown h1, .stMarkdown h3 {
+        color: black;  
+        border-bottom: 2px solid red;
+        padding-bottom: 10px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 if 'pdf_uploaded' not in st.session_state:
     st.session_state['pdf_uploaded'] = False
 
 st.title("Interface Conversacional")
 
-# Seção para upload de PDF
+
 if not st.session_state['pdf_uploaded']:
     st.header("Upload de PDF")
     uploaded_file = st.file_uploader("Escolha um arquivo PDF", type="pdf")
@@ -25,18 +57,18 @@ if not st.session_state['pdf_uploaded']:
         else:
             st.error("Erro ao processar o PDF.")
 else:
-    # Interface Conversacional
+   
     st.header("Conversacional")
     
-    # Área de chat com histórico
+    
     if 'chat_history' not in st.session_state:
         st.session_state['chat_history'] = []
     
-    # Exibir o histórico de chat
+    
     for chat in st.session_state['chat_history']:
         st.write(chat)
     
-    # Seção para fazer perguntas
+   
     question = st.text_input("Digite sua pergunta:")
 
     if st.button("Perguntar"):
